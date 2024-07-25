@@ -33,15 +33,11 @@ The system accurately detected these conditions and activated the microsprinkler
 ### 2023 Winter Frost
 The system's continued to protect the trees during the 2023 frost events. The health of the trees remained excellent and they experienced little to no burned leaves from the frosts. An improvement to the system was a reflective cover above the weatherproof box that housed the electronics as I noticed that the Raspberry Pi was overheating during the hottest days of summer 2022.
 
-<!-- <img src="images/2022_frost_data.png" width="100%" alt="2022 Frost Event Data">
+<img src="images/frost_event_2022.png" width="100%" alt="2022 Frost Event Data">
 
-*Figure 3: Temperature, Humidity, and Pump State During 2022 Frost Event - This graph shows the correlation between temperature (blue line), humidity (green line), and pump activation (red markers) over a 24-hour period during a frost event in 2022. Note how the pump activates as temperatures approach freezing, helping to maintain a stable environment around the trees.*
+*Figure 2: Temperature, Humidity, and Pump State During 2022 Frost Event - This graph shows the correlation between temperature (blue line), humidity (orange line), and pump activation (green line) over a 24-hour period during a frost event in 2022. Note how the pump activates as temperatures approach freezing, helping to maintain a stable environment around the trees.*
 
-<img src="images/microsprinkler_setup.jpg" width="100%" alt="Microsprinkler Setup">
-
-*Figure 4: Microsprinkler System on the base of the tree* -->
-
-These results demonstrate the effectiveness of AEGIS in protecting citrus trees from frost damage, potentially saving significant crop losses and maintaining orchard health through harsh winter conditions.
+These results demonstrate the effectiveness of AEGIS isn protecting citrus trees from frost damage, potentially saving significant crop losses and maintaining orchard health through harsh winter conditions.
 
 ## Improvments during the 2024 season
 The winter of 2024 has been very mild and no frost was ever predicted for the area.
