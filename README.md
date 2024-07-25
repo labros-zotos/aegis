@@ -67,6 +67,7 @@ The new sensor is called Nereid and will have the following features:
     <img src="images/nereid_schematic.png" width="62%" alt="Nereid v1 PCB Design">
     <img src="images/nereid_pcb.png" width="37%" alt="Nereid v1 Circuit Schematic"> 
 </p>
+
 *Figure 3: Nereid wireless sensor interface module initial circuit schematic and pcb design.*
 
 #### Notes
