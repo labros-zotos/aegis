@@ -1,0 +1,109 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+.thumbnails
+._*
+
+# Windows
+Desktop.ini
+$RECYCLE.BIN/
+
+# Temporary Files
+*.tmp
+*.temp
+*.swp
+*~
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.atom/
+*.komodoproject
+.komodotools/
+.eclipse
+.settings/
+.project
+.classpath
+.cproject
+.metadata
+nbproject/
+*.iml
+*.ipr
+*.iws
+
+# Build and Compiled Files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
+*.pyo
+__pycache__/
+*.egg-info/
+dist/
+build/
+out/
+target/
+bin/
+obj/
+
+# Package Files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and Databases
+*.log
+*.sql
+*.sqlite
+*.db
+
+# Environment and Configuration Files
+.env
+.env.*
+!.env.example
+.config
+config.json
+
+# Dependency Directories
+node_modules/
+jspm_packages/
+bower_components/
+vendor/
+
+# Version Control
+.git/
+.gitattributes
+.svn/
+CVS/
+
+# Backup Files
+*.bak
+*.gho
+*.ori
+*.orig
+*.tmp
+
+# Miscellaneous
+*.pid
+.nfs*
+.sass-cache
+.cache/
+.coverage
+coverage/
+*.pid.lock
+.npm
+.yarn-integrity
+.eslintcache
+.stylelintcache
+.grunt
+.lock-wscript

@@ -1,0 +1,11 @@
+[Unit]
+Description=Aegis Service
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/aegis
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
