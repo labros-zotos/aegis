@@ -11,6 +11,10 @@ The system monitors environmental conditions and activates the irrigation system
 - 5V Power Supply
 - Solid State Relay
 
+![Hardware Setup](images/aegis.png "Images showing the overall system deployed on the field")
+
+*Figure 1: This image shows how all the hardware components are installed onsite and connected outside the building that houses the well pump.*
+
 ## Features
 
 - Real-time monitoring of temperature and humidity
