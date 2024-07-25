@@ -63,6 +63,14 @@ The new sensor is called Nereid and will have the following features:
 - LoRa communication (RFM95/SX1278 chip)
 - 1-2 year battery life (depending on the measurement frequency)
 
+<img src="images/nereid_schematic.png" width="62%" alt="2022 Frost Event Data">
+<img src="images/nereid_pcb.png" width="37%" alt="2022 Frost Event Data"> 
+
+*Figure 3: Nereid wireless sensor interface module initial schematic and pcb design.*
+
+#### Notes
+The new STM32WL3 Family could be a good alternative to working with the STM32L0 + RFM95W combination as I had originally designed.  
+
 ## Dependencies
 
 This project uses the following libraries:
