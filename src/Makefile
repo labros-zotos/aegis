@@ -13,7 +13,7 @@ ifdef CI
     FLAGS += -Werror
 endif
 
-CFLAGS = $(FLAGS) -g3
+CFLAGS = $(FLAGS) $(DEBUG_FLAG)
 CXXFLAGS = $(CFLAGS)
 LDFLAGS = -lpigpio -lrt -pthread -lfmt
 
@@ -22,6 +22,9 @@ OBJS = $(common_sources:.c=.o) $(i2c_sources:.c=.o) $(driver_sources:.c=.o) $(i2
 .PHONY: all clean
 
 all: aegis
+
+debug: DEBUG_FLAG = -g3
+debug: aegis
 
 aegis: $(OBJS)
 	g++ $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
