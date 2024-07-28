@@ -59,17 +59,18 @@ Step-by-step instructions for building and installing the autonomous irrigation 
 1. Install git and clone the AEGIS repository:
 
 ```
-sudo apt update && sudo apt install git && git clone https://github.com/labros-zotos/aegis.git
+git clone --recursive https://github.com/labros-zotos/aegis.git
 ```
 
 2. Install dependencies
 ```
-sudo apt-get install pigpio pigpiod libspdlog-dev libfmt-dev
+sudo apt update
+sudo apt install pigpio pigpiod libspdlog-dev libfmt-dev
 ```
 
 3. Build the aegis source code using the provided Makefile:
 ```
-cd aegis/src && make
+cd aegis/src && make -j2
 ```
 
 ### Install Service (systemd)
