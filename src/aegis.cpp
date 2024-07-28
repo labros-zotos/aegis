@@ -1,10 +1,10 @@
 #include <chrono>
 
-#include "SHT40Sensor.h"
 #include "GPIOController.h"
-#include "Pump.h"
 #include "Measurement.h"
 #include "MeasurementLogger.h"
+#include "Pump.h"
+#include "SHT40Sensor.h"
 
 #include "spdlog/spdlog.h"
 
@@ -26,7 +26,9 @@ int main() {
   while (true) {
     error = sensor.measureLowestPrecision();
     if (error != 0) {
-      spdlog::error("Error receiving temperature or humidity from SHT40 sensor: {0:d}", error);
+      spdlog::error(
+          "Error receiving temperature or humidity from SHT40 sensor: {0:d}",
+          error);
       sensor.softReset();
       continue;
     }
@@ -35,15 +37,22 @@ int main() {
         Measurement(sensor.getTemperature(), sensor.getHumidity());
     data_logger.logMeasurement(current_measurement);
 
-    spdlog::debug("Temperature: {:03.2f}, Humidity: {:03.2f}", current_measurement.getTemperature(),
-                 current_measurement.getHumidity());
+    spdlog::debug("Temperature: {:03.2f}, Humidity: {:03.2f}",
+                  current_measurement.getTemperature(),
+                  current_measurement.getHumidity());
     spdlog::debug("Cooling Rate: {:03.2f}", data_logger.getHourlyCoolingRate());
 
-    if ((current_measurement.getTemperature() < 2.0 &&
-        data_logger.getHourlyCoolingRate() < -0.5) || current_measurement.getTemperature() < 0.5) {
+    bool frost_risk_detected = (current_measurement.getTemperature() < 2.0 &&
+                                data_logger.getHourlyCoolingRate() < -0.5) ||
+                               current_measurement.getTemperature() < 0.5;
+
+    bool frost_risk_over = (current_measurement.getTemperature() > 1.5 &&
+                            data_logger.getHourlyCoolingRate() > 0.5) ||
+                           current_measurement.getTemperature() > 3.0;
+
+    if (frost_risk_detected) {
       pump.turnOn();
-    } else if ((current_measurement.getTemperature() > 1.5 &&
-               data_logger.getHourlyCoolingRate() > 0.5) || current_measurement.getTemperature() > 3.0) {
+    } else if (frost_risk_over) {
       pump.turnOff();
     }
 
@@ -51,6 +60,8 @@ int main() {
 
     this_thread::sleep_for(chrono::seconds(58));
   }
+
+  delete gpio;
 
   return 0;
 }
