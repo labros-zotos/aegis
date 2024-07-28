@@ -11,7 +11,7 @@ The system monitors environmental conditions and activates the irrigation system
 - 5V Power Supply
 - Solid State Relay
 
-![Hardware Setup](images/aegis.png "Images showing the overall system deployed on the field")
+<img src="images/aegis.png" width="60%" alt="Images showing the overall system deployed on the field">
 
 *Figure 1: This image shows how all the hardware components are installed onsite and connected outside the building that houses the well pump.*
 
@@ -21,7 +21,85 @@ The system monitors environmental conditions and activates the irrigation system
 - Automated activation of irrigation system based on temperature drop and frost risk
 - Data logging for analysis 
 
+## Build and Installation of AEGIS service
 
+Step-by-step instructions for building and installing the autonomous irrigation controller on Raspberry Pi 4 running Raspberry Pi OS (64-bit) Bookworm.
+
+### Hardware Connections
+
+1. SHT40 Sensor:
+   - VCC to Pin 1 (3.3V)
+   - GND to Pin 6 (Ground)
+   - SDA to Pin 3 (GPIO 2, SDA)
+   - SCL to Pin 5 (GPIO 3, SCL)
+
+3. Solid State Relay (for pump control):
+   - Control pin to GPIO 17 (Pin 11)
+   - GND to Pin 14 (Ground)
+
+### Raspberry Pi Configuration
+
+1. Use Imager to flash the Raspberry Pi OS Bookworm onto an SD card. 
+    
+    In the advanced options Enable SSH and Configure wireless LAN **or** use the files provided under the raspberry_config folder.
+2. Boot the Raspberry Pi after making sure all the hardware is connected and connect to it via SSH.
+3. Enable I2C interface: 
+
+    1. Run the following command:
+        ```
+        sudo raspi-config
+        ```
+    3. Navigate to the "Interfacing Options" option in the menu and press Enter.
+    4. In the "Interfacing Options" menu, scroll down and select "I2C" and press Enter.
+    5. When asked select "Yes" and press Enter.
+    6. Select "Finish" button and press Enter to exit the configuration tool.
+
+### Build
+
+1. Install git and clone the AEGIS repository:
+
+```
+sudo apt update && sudo apt install git && git clone https://github.com/labros-zotos/aegis.git
+```
+
+2. Install dependencies
+```
+sudo apt-get install pigpio pigpiod libspdlog-dev libfmt-dev
+```
+
+3. Build the aegis source code using the provided Makefile:
+```
+cd aegis/src && make
+```
+
+### Install Service (systemd)
+
+1. Copy executable to /usr/sbin
+```
+sudo cp aegis /usr/sbin/aegis
+```
+
+2. Change permissions
+```
+sudo chown root:root /usr/sbin/aegis
+sudo chmod 755 /usr/sbin/aegis
+```
+
+3. Copy the provided service file to the systemd directory:
+```
+sudo cp ../service/aegis.service /etc/systemd/system/aegis.service
+```
+4. Enable and start the service:
+```
+sudo systemctl daemon-reload
+sudo systemctl enable aegis.service && sudo systemctl start aegis.service 
+```
+5. Check the status of the service:
+```
+sudo systemctl status aegis.service 
+```
+
+*Note: Debug level logs are enabled by default.(Configurable in https://github.com/labros-zotos/aegis/blob/main/src/aegis.cpp#L14)*
 ## Results
 
 AEGIS was proven highly effective in protecting the lemon trees from frost damage both during the 2022 and 2023 winter frost events in our area, the system successfully prevented significant damage to the orchard.
