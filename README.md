@@ -3,6 +3,8 @@
 This project implements an autonomous irrigation controller designed to prevent frost damage on citrus trees using undertree microsprinklers. 
 The system monitors environmental conditions and activates the irrigation system when frost risk is detected.
 
+*See also: <https://github.com/labros-zotos/meta-aegis> a custom **Yocto Project Layer for AEGIS***
+
 ## Hardware Components
 
 - Raspberry Pi 3/4 Model B
